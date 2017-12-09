@@ -4,7 +4,7 @@ MAINTAINER Hardwire Interactive
 
 RUN mkdir /code
 WORKDIR /code
-ADD requirements.txt /code/
+ADD docker/requirements.txt /code/
 
 # Install Package
 RUN apt-get update && \
@@ -16,6 +16,6 @@ RUN apt-get update && \
     pip install -r requirements.txt
 
 # Add entrypoint script
-ADD scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD docker/scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
