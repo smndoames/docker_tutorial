@@ -7,7 +7,6 @@ services:
     build:
         context: ../
         dockerfile: docker/Dockerfile
-    entrypoint: . /env/bin/activate
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - ../djangoTutorial:/code
