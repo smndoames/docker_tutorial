@@ -13,7 +13,8 @@ class IndexView(generic.ListView):
     def get(self, request, *args, **kwargs):
         todos = self.get_queryset()
         form = TodoForm()
-        return render(request, 'toDo/content.html', {'form': form, 'todos': todos})
+        return render(request, 'toDo/content.html',
+                      {'form': form, 'todos': todos})
 
     def post(self, request, *args, **kwargs):
         todos = self.get_queryset()
@@ -22,5 +23,17 @@ class IndexView(generic.ListView):
             post = form.save(commit=False)
             post.save()
             return redirect('toDo:index')
-        return render(request, 'toDo/content.html', {'form': form, 'todos': todos})
+        return render(request, 'toDo/content.html',
+                      {'form': form, 'todos': todos})
 
+
+class CurateTodo():
+    def post(self, request, *args, **kwargs):
+        todos = self.get_queryset()
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('toDo:index')
+        return render(request, 'toDo/content.html',
+                      {'form': form, 'todos': todos})
