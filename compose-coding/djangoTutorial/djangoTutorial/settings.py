@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.staticfiles', Do not import if use custom url for static
+    'django.contrib.staticfiles', #Do not import if use custom url for static
     'polls.apps.PollsConfig',
+    'toDo.apps.TodoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
