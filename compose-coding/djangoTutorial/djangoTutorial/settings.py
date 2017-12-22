@@ -128,14 +128,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = '/code/media/'
+
+# should not import if will use auto static
 # STATIC_ROOT = "/code/static/"
 #
 # STATICFILES_DIRS = [
 #     STATIC_ROOT
 # ]
 
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = '/code/media/'
-
-STATICFILES_STORAGE = 'myproject.storage.S3Storage'
+# STATICFILES_STORAGE = 'myproject.storage.S3Storage'
