@@ -1,0 +1,7 @@
+.checkbox {
+    margin-left: 20px;
+}
+
+.strikethrough:checked + span {
+  text-decoration:line-through
+}

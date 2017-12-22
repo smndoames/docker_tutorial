@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.staticfiles', Do not import if use custom url for static
+    'django.contrib.staticfiles',  # Do not import if use custom url for static
     'polls.apps.PollsConfig',
+    'toDo.apps.TodoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,16 +91,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -123,14 +128,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/code/static/"
-
-STATICFILES_DIRS = [
-    STATIC_ROOT
-]
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = '/code/media/'
 
-STATICFILES_STORAGE = 'myproject.storage.S3Storage'
+# should not import if will use auto static
+# STATIC_ROOT = "/code/static/"
+#
+# STATICFILES_DIRS = [
+#     STATIC_ROOT
+# ]
+
+# STATICFILES_STORAGE = 'myproject.storage.S3Storage'
