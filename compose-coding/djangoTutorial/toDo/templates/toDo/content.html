@@ -22,17 +22,36 @@
                 {% endfor %}
             {% endif %}
             <div class="well well-lg">
-                <form method="POST" class="post-form">
+                <form method="POST" class="post-form" action="{% url 'toDo:clear_selected' %}">
+                    {% csrf_token %}
                      <div style="text-align: right">
-                    <button type="button" class="btn btn-danger">clear selected list</button>
-                </div>
-                </form>
-                {% for todo in todos %}
-                    <div class="checkbox">
-                      <label><input type="checkbox" value="">{{ todo.name }}</label>
+                        <button type="submit"  class="btn btn-danger">clear selected list</button>
                     </div>
-                {% endfor %}
+                </form>
+                <form id="todos" method="POST" class="post-form" action="">
+                    {% csrf_token %}
+                    {% for todo in todos %}
+                        <div class="checkbox">
+                          <label>
+                              <input type="checkbox" name="{{todo.id}}"
+                              value="{% url 'toDo:curated_todo' todo.id%}"
+                              onclick="formaction(this)"
+                                    {% if todo.is_selected %}
+                                        checked
+                                    {% endif %}
+                              >{{ todo.name }}
+                              </input>
+                          </label>
+                        </div>
+                    {% endfor %}
+                </form>
             </div>
+            <script>
+                function formaction(checkbox){
+                    document.getElementById("todos").action = checkbox.value;
+                    document.getElementById("todos").submit()
+                }
+            </script>
         </div>
     </div>
 
